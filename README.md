@@ -1,3 +1,3 @@
-# Rental accident non-notice penalty review
+# 렌터카 사고 미고지 패널티 조사
 
-GitHub Pages static site.
+렌터카 사고 발생 후 고객이 회사에 사고 사실을 통보하지 않는 경우의 책임 범위, 주요 렌터카 업체 약관 사례, 계약서 반영 방향을 정리한 검토 자료입니다.
