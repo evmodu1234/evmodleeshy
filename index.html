@@ -235,13 +235,17 @@
       border-collapse: collapse;
       min-width: 980px;
       background: #fff;
+      table-layout: fixed;
     }
 
     th, td {
-      padding: 14px 14px;
+      padding: 18px 18px;
       vertical-align: top;
       border-bottom: 1px solid var(--line);
       font-size: 14px;
+      line-height: 1.75;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     th {
@@ -254,7 +258,63 @@
       z-index: 1;
     }
 
+    tbody tr:nth-child(even) td { background: #fbfdff; }
     tr:last-child td { border-bottom: 0; }
+    td b { color: #0f1a2e; }
+
+    .case-table {
+      min-width: 1120px;
+    }
+
+    .case-table th,
+    .case-table td {
+      padding: 18px 16px;
+      letter-spacing: -.15px;
+    }
+
+    .case-table td:first-child {
+      font-weight: 900;
+      color: #0f1a2e;
+    }
+
+    .case-table td:last-child,
+    .case-table th:last-child {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .case-table .tag {
+      margin: 0;
+    }
+
+
+    .company-name {
+      display: block;
+      font-weight: 950;
+      color: #0f1a2e;
+      line-height: 1.45;
+    }
+
+    .cell-list {
+      margin: 0;
+      padding-left: 17px;
+    }
+
+    .cell-list li {
+      margin: 0 0 7px;
+    }
+
+    .cell-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cell-note {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+      margin-top: 6px;
+    }
 
     .tag {
       display: inline-flex;
@@ -399,7 +459,7 @@
 <span class="badge">렌트카 사고 미고지 대응 약관 조사</span>
 <h1>사고 미고지·은폐·임의수리 시<br/>고객 책임 및 계약서 반영 검토</h1>
 <p class="lead">
-        자동차대여 표준약관과 주요 렌트카·카셰어링·KB캐피탈 장기렌트 사례를 기준으로,
+        자동차대여 표준약관과 주요 렌트카·카셰어링 사례를 기준으로,
         사고 발생 시 고객의 통지 의무, 계약서상 패널티, 실무상 청구 가능 범위,
         계약서 전체 수정 방향과 사고 미고지 조항 강화 방향을 정리한 검토용 자료입니다.
       </p>
@@ -441,7 +501,7 @@
 <div class="card stat">
 <strong>공통</strong>
 <span>즉시 통보 의무</span>
-<p>주요 업체와 표준약관은 사고·접촉·파손 발생 시 회사 또는 고객센터 통보를 기본 의무로 두고, KB캐피탈 장기렌트도 사고·정비 접수 구조를 운영</p>
+<p>주요 업체와 표준약관은 사고·접촉·파손 발생 시 회사 또는 고객센터 통보를 기본 의무로 규정</p>
 </div>
 <div class="card stat">
 <strong>핵심</strong>
@@ -526,13 +586,15 @@
 <p class="hint">공개 약관 및 홈페이지 안내 기준 요약</p>
 </div>
 </div>
-<div class="callout" style="margin-bottom:16px;">
-<p>
-<b>KB캐피탈 장기렌트 사례의 의미:</b> 캐피탈사 공개 자료 중에서는 KB캐피탈이 장기렌트 반납 시 사고에 따른 가치감가 및 원상복구 비용 등 추가 부담 가능성을 비교적 구체적으로 안내하고 있습니다. 다만 사고 미고지 시 세부 패널티가 약관 전문 형태로 명확히 노출되는 것은 아니므로, 계약서에는 사고 즉시 통보·자료 제출·임의수리 금지·미고지 손해 부담을 별도로 명확히 두는 것이 필요합니다.
-        </p>
-</div>
 <div class="table-wrap">
-<table>
+<table class="case-table">
+<colgroup>
+<col style="width:13%"/>
+<col style="width:22%"/>
+<col style="width:27%"/>
+<col style="width:26%"/>
+<col style="width:12%"/>
+</colgroup>
 <thead>
 <tr>
 <th>업체/서비스</th>
@@ -544,55 +606,45 @@
 </thead>
 <tbody>
 <tr>
-<td><b>롯데렌트카</b></td>
-<td>사고처리 문의는 24시간 가능하며, 차량 손망실 발생 시 롯데렌트카와 협의해 정해진 곳에서 수리</td>
-<td>임차인 과실사고 및 가해자 불명 자차사고의 수리비는 고객 부담, 수리기간 중 표준대여료 50% 상당 휴차보상료 청구</td>
-<td>미고지 패널티 자체보다는 사고 발생 후 협의 수리, 수리비, 휴차손해 부담 구조 참고</td>
+<td><span class="company-name">롯데렌트카</span></td>
+<td><ul class="cell-list"><li>24시간 사고처리 문의 가능</li><li>차량 손망실 발생 시 협의 후 지정 수리</li></ul></td>
+<td><ul class="cell-list"><li>과실사고·가해자 불명 자차사고 수리비 고객 부담</li><li>수리기간 표준대여료 50% 상당 휴차보상료 청구</li></ul></td>
+<td>미고지 자체 패널티보다는 <b>협의 수리, 수리비, 휴차손해 부담</b> 구조를 참고할 수 있음</td>
 <td><span class="tag high">높음</span></td>
 </tr>
 <tr>
-<td><b>SK렌트카</b></td>
-<td>공개 홈페이지상 사고·정비·긴급출동 24시간 접수 가능 안내</td>
-<td>공개 페이지 기준 사고 미통보 패널티 상세 문구는 직접 확인 제한. 실제 계약서·상품약관 확인 필요</td>
-<td>메이저 렌트카도 사고 접수 채널을 상시 운영하므로, 계약서에는 즉시 통보 및 비협조 시 손해 부담을 명확히 둘 필요</td>
+<td><span class="company-name">SK렌트카</span></td>
+<td><ul class="cell-list"><li>사고·정비·긴급출동 24시간 접수 가능 안내</li></ul></td>
+<td><ul class="cell-list"><li>공개 페이지 기준 미통보 패널티 상세 문구 확인 제한</li><li>실제 계약서·상품약관 확인 필요</li></ul></td>
+<td>메이저 렌트카도 상시 사고 접수 채널을 운영하므로, 계약서에 <b>즉시 통보 및 비협조 시 손해 부담</b>을 명확히 둘 필요</td>
 <td><span class="tag low">보조</span></td>
 </tr>
 <tr>
-<td><b>KB캐피탈</b></td>
-<td>장기렌트 상품에서 차량등록, 정비, 사고처리, 보험 등 유지관리서비스를 제공하고 사고·정비 콜센터를 통해 사고 처리를 안내</td>
-<td>공개 FAQ상 반납 시 사고에 따른 가치감가 및 원상복구 비용 등 추가 부담 가능. 사고 미통보 세부 패널티는 공개 페이지 기준 확인 제한</td>
-<td>캐피탈사 장기렌트도 사고처리·보험이 상품 구조에 포함되므로, 미고지로 사고처리·원상복구가 어려워진 경우 비용 부담 조항을 계약서에 명확히 둘 필요</td>
-<td><span class="tag mid">보조~중간</span></td>
-</tr>
-
-
-
-<tr>
-<td><b>그린카</b></td>
-<td>사고·고장·접촉 시 차량 손상 여부와 관계없이 고객센터 즉시 연락</td>
-<td>자동차 사고 및 파손 즉시 미통보 시 발생실비 또는 수리비 청구, 영구 이용정지</td>
-<td>수리비 실비 청구와 플랫폼 이용 제한을 결합한 강한 구조</td>
+<td><span class="company-name">그린카</span></td>
+<td><ul class="cell-list"><li>사고·고장·접촉 시 고객센터 즉시 연락</li><li>차량 손상 여부와 관계없이 통보</li></ul></td>
+<td><ul class="cell-list"><li>자동차 사고·파손 즉시 미통보 시 발생실비 또는 수리비 청구</li><li>영구 이용정지 가능</li></ul></td>
+<td><b>수리비 실비 청구</b>와 <b>서비스 이용 제한</b>을 결합한 강한 구조</td>
 <td><span class="tag high">높음</span></td>
 </tr>
 <tr>
-<td><b>투루카</b></td>
-<td>고장·사고 발생 시 고객센터 즉시 연락, 자료 제출, 경찰접수, 협의 정비업체 수리</td>
-<td>정당한 이유 없는 미고지, 은폐, 도주, 현장 이탈 시 차량손해면책 적용 제외 가능. 미신고 시 발생실비와 이용 제한</td>
-<td>단순 미통보보다 은폐·도주·방치 등 중대한 위반을 구분하는 구조</td>
+<td><span class="company-name">투루카</span></td>
+<td><ul class="cell-list"><li>고장·사고 발생 시 고객센터 즉시 연락</li><li>자료 제출, 경찰접수, 협의 정비업체 수리</li></ul></td>
+<td><ul class="cell-list"><li>정당한 이유 없는 미고지·은폐·도주·현장 이탈 시 차량손해면책 적용 제외 가능</li><li>미신고 시 발생실비 및 이용 제한</li></ul></td>
+<td>단순 미통보와 <b>은폐·도주·방치</b> 등 중대한 위반을 구분하는 구조</td>
 <td><span class="tag high">높음</span></td>
 </tr>
 <tr>
-<td><b>쏘카</b></td>
-<td>사고센터 접수, 사고현장 촬영, 상대방·목격자 정보 및 보험사 확인 안내</td>
-<td>정당한 이유 없이 사고·파손 사실을 즉시 또는 계약기간 또는 대여기간 중 알리지 않거나 은폐·도주·현장 이탈한 경우 보장 제한 가능</td>
-<td>공정위 시정 사례 이후 “정당한 이유 없는 미신고” 형태로 정교화된 구조</td>
+<td><span class="company-name">쏘카</span></td>
+<td><ul class="cell-list"><li>사고센터 접수</li><li>사고현장 촬영, 상대방·목격자 정보 및 보험사 확인</li></ul></td>
+<td><ul class="cell-list"><li>정당한 이유 없이 사고·파손 사실을 즉시 또는 계약기간·대여기간 중 알리지 않은 경우 보장 제한 가능</li><li>은폐·도주·현장 이탈 시 보장 제한 가능</li></ul></td>
+<td>공정위 시정 사례 이후 <b>“정당한 이유 없는 미신고”</b> 형태로 정교화된 구조</td>
 <td><span class="tag high">매우 높음</span></td>
 </tr>
 <tr>
-<td><b>제주렌트카</b></td>
-<td>사고 발생 시 회사 즉시 통보, 영업시간 외 경찰서 또는 보험사 연락 안내</td>
-<td>사고 즉시 접수되지 않은 사고는 면책제도 제외. 미연락 후 반납 시 수리비 및 상대방 대물 포함 전액 고객 부담 안내</td>
-<td>미접수 사고에 대해 자차면책 제외 및 손해 전액 부담을 명확히 안내</td>
+<td><span class="company-name">제주렌트카</span></td>
+<td><ul class="cell-list"><li>사고 발생 시 회사 즉시 통보</li><li>영업시간 외 경찰서 또는 보험사 연락 안내</li></ul></td>
+<td><ul class="cell-list"><li>사고 즉시 접수되지 않은 사고는 면책제도 제외</li><li>미연락 후 반납 시 수리비 및 상대방 대물 포함 전액 고객 부담 안내</li></ul></td>
+<td><b>미접수 사고</b>에 대해 자차면책 제외 및 손해 전액 부담을 명확히 안내</td>
 <td><span class="tag mid">중간~높음</span></td>
 </tr>
 </tbody>
@@ -794,11 +846,6 @@
 <td>고위험 고객에 대한 운영상 제재 근거 마련</td>
 </tr>
 <tr>
-<td><b>KB캐피탈 장기렌트 참고</b></td>
-<td>KB캐피탈 장기렌트의 반납 시 사고 가치감가·원상복구 비용 부담 사례를 참고하되, 공개 페이지에 없는 사고 미고지 책임은 계약서에 직접 명시</td>
-<td>보험 포함 상품에서도 고객 미고지로 발생한 손해를 청구할 수 있는 근거 마련</td>
-</tr>
-<tr>
 <td><b>별도 약관/부속합의서</b></td>
 <td>계약서 본문은 요약형으로 두고, 상세 책임 범위와 산정 기준은 약관 또는 부속합의서에 구체화</td>
 <td>계약서는 간결하게 유지하면서 실무 대응력 확보</td>
@@ -878,17 +925,6 @@
 <b>제주렌트카 사고 안내</b>
 <a href="https://www.jejurentcar.co.kr/customer/customerInfo03.do" rel="noreferrer" target="_blank">사고/보험 안내</a>
 </div>
-<div class="source">
-<b>KB캐피탈 장기렌트</b>
-<a href="https://m.kbcapital.co.kr/prdt/car/carFnnc.kbc?prdtCd=5010000015" rel="noreferrer" target="_blank">장기렌트 상품 및 사고/정비 안내</a>
-</div>
-<div class="source">
-<b>KB캐피탈 FAQ</b>
-<a href="https://m.kbcapital.co.kr/cstmrPtct/fnncInfoSqre/faq.kbc" rel="noreferrer" target="_blank">반납 시 사고 가치감가·원상복구 비용 안내</a>
-</div>
-
-
-
 </div>
 </section>
 </main>
